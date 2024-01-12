@@ -126,7 +126,6 @@ class TestAccountService(TestCase):
         )
         self.assertEqual(response.status_code, status.HTTP_415_UNSUPPORTED_MEDIA_TYPE)
 
-
     def test_read_an_account(self):
         """It should Read a single Account"""
         account = self._create_accounts(1)[0]
