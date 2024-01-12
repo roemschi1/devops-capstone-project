@@ -42,7 +42,7 @@ def index():
 def create_accounts():
     """
     Creates an Account
-    This endpoint will create an Account based the data in the body that is posted
+    This endpoint will create an Account based the data in the body
     """
     app.logger.info("Request to create an Account")
     check_content_type("application/json")
@@ -56,6 +56,7 @@ def create_accounts():
     return make_response(
         jsonify(message), status.HTTP_201_CREATED, {"Location": location_url}
     )
+
 
 ######################################################################
 # LIST ALL ACCOUNTS
@@ -73,6 +74,7 @@ def list_accounts():
     app.logger.info(f"Returning {len(accounts_list)} accounts")
     return jsonify(accounts_list), status.HTTP_200_OK
 
+
 ######################################################################
 # READ AN ACCOUNT
 ######################################################################
@@ -84,12 +86,11 @@ def read_account(account_id):
     This endpoint will read an Account based bon the account_id
     """
     app.logger.info(f"Request to read an Account with the id: {account_id}")
-    
+
     account = Account.find(account_id)
     if not account:
         abort(status.HTTP_404_NOT_FOUND, f"Account with id {account_id} not found.")
     return account.serialize(), status.HTTP_200_OK
-
 
 
 ######################################################################
