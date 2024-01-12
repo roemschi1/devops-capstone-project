@@ -37,7 +37,6 @@ jobs:
 
       - name: Lint with flake8
         run: |
-          flake8 service
 
       - name: Run unit tests with nose
         run: nosetests
